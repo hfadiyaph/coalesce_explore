@@ -1,0 +1,164 @@
+fileVersion: 1
+id: dbd15544-abc7-4292-b124-bb49322ef478
+name: STG_CUSTOMER_HASH_DIFF
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TEST_SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03e7269e-c4f0-4d0b-b031-be8b558f831a
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CUSTOMER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b25c70f-e863-43c1-bd4a-cce8a4e67dbb
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 05524e7a-6c7b-418a-89a4-894836578ddc
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7477b721-c74c-4511-8dd6-b4caf4805b53
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bf289c76-e4d0-46d7-8ac9-d36aea5264a1
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ADDRESS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 032a5c45-72c3-4a3d-ad57-2c4a5f8cdeab
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a063fb8-0d47-4cf1-84df-67882f1b37bc
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PHONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 954994aa-24b5-445e-a469-c3a67d84d05e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b48743bf-be4d-4860-8a52-aa1848b8184c
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dc1046b0-e169-44b7-8def-75084048209e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f88d22aa-bd45-4bb5-abc1-4308b48f1cd2
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: LAST_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5b90dd6-2bad-433f-a304-ee0ca91a6280
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f04cf7fe-2336-48b5-8646-08af7e6a344f
+          stepCounter: dbd15544-abc7-4292-b124-bb49322ef478
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: RECORD_HASH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7df2c768-44e4-4755-aefb-03dcf8816d7e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('TEST_SRC', 'STG_CUSTOMER_HASH_DIFF')}} AS (
+            		WITH src AS (
+            			SELECT
+            				s."CUSTOMER_ID",
+            				s."NAME",
+            				s."ADDRESS",
+            				s."PHONE",
+            				s."EMAIL",
+            				s."LAST_UPDATED",
+            				s."RECORD_HASH"
+            			FROM  {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_HASH') }} s
+            		)
+            		SELECT 
+            			src."CUSTOMER_ID",
+            			src."NAME",
+            			src."ADDRESS",
+            			src."PHONE",
+            			src."EMAIL",
+            			src."LAST_UPDATED",
+            			src."RECORD_HASH"
+            		FROM src
+            		LEFT JOIN {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_HASH_HISTORY') }} t
+            			ON src."CUSTOMER_ID" = t."CUSTOMER_ID"
+            		WHERE t."RECORD_HASH" IS NULL
+            		OR src."RECORD_HASH" <> t."RECORD_HASH"
+            	)
+        dependencies:
+          - locationName: TEST_SRC
+            nodeName: STG_SRC_CUSTOMER_CHANGES_HASH
+        join:
+          joinCondition: FROM {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_HASH') }} "STG_SRC_CUSTOMER_CHANGES_HASH"
+        name: STG_CUSTOMER_HASH_DIFF
+        noLinkRefs: []
+  name: STG_CUSTOMER_HASH_DIFF
+  overrideSQL: true
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

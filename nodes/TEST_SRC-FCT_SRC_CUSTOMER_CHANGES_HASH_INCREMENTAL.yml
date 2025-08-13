@@ -1,0 +1,196 @@
+fileVersion: 1
+id: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+name: FCT_SRC_CUSTOMER_CHANGES_HASH_INCREMENTAL
+operation:
+  config:
+    clusterKey: false
+    postSQL: |-
+      MERGE INTO {{ ref('TEST_SRC', 'FCT_SRC_CUSTOMER_CHANGES_HASH_INCREMENTAL') }} AS T
+      USING {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_HASH') }} AS S
+      ON T.CUSTOMER_ID = S.CUSTOMER_ID
+      
+      WHEN MATCHED AND T.RECORD_HASH <> S.RECORD_HASH THEN
+          UPDATE SET
+              T.NAME = S.NAME,
+              T.ADDRESS = S.ADDRESS,
+              T.PHONE = S.PHONE,
+              T.EMAIL = S.EMAIL,
+              T.LAST_UPDATED = S.LAST_UPDATED,
+              T.RECORD_HASH = S.RECORD_HASH
+      
+      WHEN NOT MATCHED THEN
+          INSERT (CUSTOMER_ID, NAME, ADDRESS, PHONE, EMAIL, LAST_UPDATED, RECORD_HASH)
+          VALUES (S.CUSTOMER_ID, S.NAME, S.ADDRESS, S.PHONE, S.EMAIL, S.LAST_UPDATED, S.RECORD_HASH);
+    preSQL: ""
+    secureOption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TEST_SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28013fd6-cefb-49b3-8af3-ebe67e093e7d
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        isBusinessKey: true
+        name: CUSTOMER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b25c70f-e863-43c1-bd4a-cce8a4e67dbb
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 75543813-5a12-447b-800d-aa96c46a75f0
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        isBusinessKey: true
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7477b721-c74c-4511-8dd6-b4caf4805b53
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: be330b62-06b8-40f9-ac60-19a0ee403ed2
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        isBusinessKey: true
+        name: ADDRESS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 032a5c45-72c3-4a3d-ad57-2c4a5f8cdeab
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5bd76ee-e881-465b-9f9a-076f8bf31138
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        isBusinessKey: true
+        name: PHONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 954994aa-24b5-445e-a469-c3a67d84d05e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0c7d66c-7a7e-4754-b19e-5030624df85c
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        isBusinessKey: true
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dc1046b0-e169-44b7-8def-75084048209e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd461438-111e-4c05-b698-7e457c515ae0
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        isBusinessKey: true
+        name: LAST_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5b90dd6-2bad-433f-a304-ee0ca91a6280
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5082366f-ae2e-4fe2-9314-3fb169d3e4ab
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        isBusinessKey: true
+        name: RECORD_HASH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7df2c768-44e4-4755-aefb-03dcf8816d7e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2286787-0e00-4106-b69b-e7c9bbf9d256
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fe0b6595-86c2-45c5-8c03-29ffd2b61ce2
+          stepCounter: f0d7ff3e-7ee0-4fc5-8fa9-0438b9dd4166
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TEST_SRC
+            nodeName: STG_SRC_CUSTOMER_CHANGES_HASH
+        join:
+          joinCondition: FROM {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_HASH') }} "STG_SRC_CUSTOMER_CHANGES_HASH"
+        name: FCT_SRC_CUSTOMER_CHANGES_HASH_INCREMENTAL
+        noLinkRefs: []
+  name: FCT_SRC_CUSTOMER_CHANGES_HASH_INCREMENTAL
+  overrideSQL: false
+  schema: ""
+  sqlType: Dimension
+  type: sql
+  version: 1
+type: Node

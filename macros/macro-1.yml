@@ -1,0 +1,46 @@
+fileVersion: 1
+id: "1"
+macroString: |
+  {% macro even_odd(column) -%}
+    CASE WHEN MOD({{ column }}, 2) = 0 THEN 'EVEN' ELSE 'ODD' END
+  {%- endmacro %}
+  
+  {% macro acctbal_filter(alias, column,min_bal) -%}
+    {{ alias }}.{{ column }} >= {{ min_bal }}
+  {%- endmacro %}
+  
+  {% macro segment_filter(alias, column) -%}
+    {{ alias }}.{{ column }} = '{{ parameters.target_segment }}'
+  {%- endmacro %}
+  
+  {% macro data_diff(table, column) -%}
+    SELECT MAX({{ column }}) FROM {{ table }}
+  {%- endmacro %}
+  
+  {% macro run_test(object_name, column_name, test_case_name) -%}
+  
+    SELECT
+        '{{ object_name }}' AS object_name,
+        '{{ column_name }}' AS column_name,
+        '{{ test_case_name }}' AS test_case_name,
+        OBJECT_CONSTRUCT(*) AS failed_record,
+        CURRENT_TIMESTAMP() AS run_time
+    FROM {{ object_name }}
+    {% if test_case_name == 'not_null' %}
+    WHERE {{ column_name }} IS NULL
+  
+    {% elif test_case_name == 'negative_value' %}
+    WHERE {{ column_name }} < 0
+  
+    {% elif test_case_name == 'string_length' %}
+    WHERE LENGTH({{ column_name }}) > 50
+  
+    {% else %}
+    -- If unknown test case, do nothing
+    WHERE 1=0
+    {% endif %};
+  
+  {%- endmacro %}
+  
+name: macro
+type: Macro

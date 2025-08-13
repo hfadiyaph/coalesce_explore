@@ -1,0 +1,6 @@
+excludeSelector: ""
+fileVersion: 1
+id: "1"
+includeSelector: "{ location: SRC name: CUSTOMER } OR { location: TARGET name: STG_CUSTOMER_FILTERED }"
+name: JOB_FILTER_CUSTOMER
+type: Job

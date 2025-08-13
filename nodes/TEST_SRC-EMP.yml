@@ -1,0 +1,92 @@
+fileVersion: 1
+id: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+name: EMP
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: TEST_SRC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c2464cf7-f14e-44f2-a386-ff36298da2c8
+          stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: EMP_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6b07a68-cb28-4d27-92af-f6c8b8477003
+          stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: EMP_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5240adc0-def4-400d-95d5-2003ca688ad4
+          stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: EMP_ADDRESS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 264af050-b1c6-436d-a73a-9e6a3ede6164
+          stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: EMP_EMAIL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: EMP
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node

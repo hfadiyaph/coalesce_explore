@@ -1,0 +1,185 @@
+fileVersion: 1
+id: 999fd43b-4223-4a17-9070-9364bf4e27d7
+name: STG_CUSTOMER_FILTERED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Customer data as defined by TPC-H
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests:
+      - continueOnFailure: true
+        description: ""
+        name: Test
+        runOrder: After
+        templateString: ""
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1928e175-0b65-4697-8127-74bc19e4a29f
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: C_CUSTKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2c4e7239-1017-48f7-b6b9-8c8be0919b3c
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 024849fa-f125-4b03-ac6d-b12b765f32ec
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: C_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a03338c0-fd49-4308-8481-8780d54466e1
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e09bd7e3-2896-4f68-9615-f772bff8fdee
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: C_ADDRESS
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e86b049a-7d38-49e4-831e-120ef25cf2a5
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0876f759-1e16-455e-ba32-8bc122b57555
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: C_NATIONKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5489da8b-c14a-4473-b25c-36232d23961e
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aaf01839-5a45-4dcc-9fee-fba6870ebfa6
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: VARCHAR(15)
+        description: ""
+        name: C_PHONE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 01f198e1-b43f-4426-b179-28129c046b43
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e1f5b07-e209-48aa-ba13-3ace1ecf08ca
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: NUMBER(12,2)
+        description: ""
+        name: C_ACCTBAL
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8eb5052-e167-476a-80d3-67bf2ecfff8e
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 88796b12-e7fe-4133-ba7b-5c8e9f763c33
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: C_MKTSEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d91362a0-2abb-4401-8d27-070da2f35058
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0dbe6b5f-c4a2-44c2-b301-d0b197a83d90
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: VARCHAR(117)
+        description: ""
+        name: C_COMMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d8487b31-348a-45ab-a8e2-72b83f7fbe52
+                stepCounter: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: adcfac8b-dcda-407e-80a4-e831b457ffe1
+          stepCounter: 999fd43b-4223-4a17-9070-9364bf4e27d7
+        config: {}
+        dataType: VARCHAR(10)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: NATIONKEY_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "{{ even_odd(\"C_NATIONKEY\") }}"
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CUSTOMER: 0f6da8d3-48bd-4ed0-bb99-6ee44ba1b65c
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: CUSTOMER
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'CUSTOMER') }} "CUSTOMER"
+            WHERE {{ acctbal_filter("CUSTOMER","C_ACCTBAL",parameters.min_acctbal) }}
+              AND {{ segment_filter("CUSTOMER","C_MKTSEGMENT") }}
+              {% if parameters.nationkey_mode == 'even' %}
+                  AND MOD("CUSTOMER"."C_NATIONKEY", 2) = 0
+              {% elif parameters.nationkey_mode == 'odd' %}
+                  AND MOD("CUSTOMER"."C_NATIONKEY", 2) = 1
+              {% endif %}
+        name: STG_CUSTOMER_FILTERED
+        noLinkRefs: []
+  name: STG_CUSTOMER_FILTERED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

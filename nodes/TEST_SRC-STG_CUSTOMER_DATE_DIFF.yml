@@ -1,0 +1,132 @@
+fileVersion: 1
+id: b20248e5-249f-47da-a4c9-afc231a3c726
+name: STG_CUSTOMER_DATE_DIFF
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TEST_SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2083146d-61a6-45dc-9883-5b5476348add
+          stepCounter: b20248e5-249f-47da-a4c9-afc231a3c726
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CUSTOMER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d30cf16c-7961-4632-8a61-38553ef64b33
+                stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d35c31d-807c-460c-bc05-3077fa4e965b
+          stepCounter: b20248e5-249f-47da-a4c9-afc231a3c726
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0183ddec-2eb6-422e-9e88-a83aa9003209
+                stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03222277-abb1-4b41-8786-f4ea6b2c1497
+          stepCounter: b20248e5-249f-47da-a4c9-afc231a3c726
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ADDRESS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 58d9ee95-a7c8-43c1-afee-b2e1d2b7caf5
+                stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d34f11c-7a1a-487a-ade8-86d7bb3da2c4
+          stepCounter: b20248e5-249f-47da-a4c9-afc231a3c726
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PHONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34b426d1-6bf8-416e-a39d-6435786be75b
+                stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1704005b-0e60-40b7-a14c-8135e55930cf
+          stepCounter: b20248e5-249f-47da-a4c9-afc231a3c726
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 254b6783-b35e-4e28-b1ac-7937bcb49a83
+                stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4683ac3a-5a02-4f77-9001-438733259ef6
+          stepCounter: b20248e5-249f-47da-a4c9-afc231a3c726
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: LAST_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59ec3408-bcf8-4db9-b663-239aac55a592
+                stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('TEST_SRC', 'STG_CUSTOMER_DATE_DIFF')}} AS (
+            		SELECT *
+            		FROM {{ ref('TEST_SRC', 'SRC_CUSTOMER_CHANGES') }} src
+            		WHERE src.LAST_UPDATED > (
+            			SELECT COALESCE(MAX(stg.LAST_UPDATED), '1900-01-01'::TIMESTAMP)
+            			FROM {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_DATE_HISTORICAL') }} stg
+            		)
+            	)
+        dependencies:
+          - locationName: TEST_SRC
+            nodeName: SRC_CUSTOMER_CHANGES
+        join:
+          joinCondition: FROM {{ ref('TEST_SRC', 'SRC_CUSTOMER_CHANGES') }} "SRC_CUSTOMER_CHANGES"
+        name: STG_CUSTOMER_DATE_DIFF
+        noLinkRefs: []
+  name: STG_CUSTOMER_DATE_DIFF
+  overrideSQL: true
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

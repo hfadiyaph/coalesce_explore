@@ -1,0 +1,130 @@
+fileVersion: 1
+id: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+name: SRC_CUSTOMER_CHANGES
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: TEST_SRC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d30cf16c-7961-4632-8a61-38553ef64b33
+          stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: CUSTOMER_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0183ddec-2eb6-422e-9e88-a83aa9003209
+          stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 58d9ee95-a7c8-43c1-afee-b2e1d2b7caf5
+          stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: ADDRESS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34b426d1-6bf8-416e-a39d-6435786be75b
+          stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHONE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 254b6783-b35e-4e28-b1ac-7937bcb49a83
+          stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: EMAIL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 59ec3408-bcf8-4db9-b663-239aac55a592
+          stepCounter: 0f0d43cc-9893-4ed9-9652-d7d1ce7c6370
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LAST_UPDATED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: SRC_CUSTOMER_CHANGES
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node

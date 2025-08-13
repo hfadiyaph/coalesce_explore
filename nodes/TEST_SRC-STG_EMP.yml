@@ -1,0 +1,101 @@
+fileVersion: 1
+id: 6cf70fa7-8dd8-46a2-b3a8-dba94ea9cf39
+name: STG_EMP
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TEST_SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests:
+      - continueOnFailure: true
+        description: ""
+        name: Test
+        runOrder: After
+        templateString: |
+          {{ run_test('TEST_DB.TEST_SCHEMA.STG_EMP', 'EMP_ADDRESS', 'not_null') }}
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4108794e-3307-4a26-be3a-d09215b3148e
+          stepCounter: 6cf70fa7-8dd8-46a2-b3a8-dba94ea9cf39
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: EMP_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c2464cf7-f14e-44f2-a386-ff36298da2c8
+                stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: efc15d9f-cb9c-43ad-bbed-f83483a78e1a
+          stepCounter: 6cf70fa7-8dd8-46a2-b3a8-dba94ea9cf39
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b6b07a68-cb28-4d27-92af-f6c8b8477003
+                stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f2fd3f1-fb0e-434c-99d4-f390e03ed0ae
+          stepCounter: 6cf70fa7-8dd8-46a2-b3a8-dba94ea9cf39
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_ADDRESS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5240adc0-def4-400d-95d5-2003ca688ad4
+                stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9ad91ea-4168-461b-af93-1f62b4ab068b
+          stepCounter: 6cf70fa7-8dd8-46a2-b3a8-dba94ea9cf39
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 264af050-b1c6-436d-a73a-9e6a3ede6164
+                stepCounter: 7b411d55-7d6b-45cd-a4d6-0ed4bb6e039e
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TEST_SRC
+            nodeName: EMP
+        join:
+          joinCondition: FROM {{ ref('TEST_SRC', 'EMP') }} "EMP"
+        name: STG_EMP
+        noLinkRefs: []
+  name: STG_EMP
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

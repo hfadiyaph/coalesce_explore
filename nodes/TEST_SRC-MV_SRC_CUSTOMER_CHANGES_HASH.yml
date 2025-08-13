@@ -1,0 +1,142 @@
+fileVersion: 1
+id: c874f363-0a09-45bb-91ae-0eb606987a13
+name: MV_SRC_CUSTOMER_CHANGES_HASH
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig:
+      items:
+        - {}
+    clusterKeyConfigExpressions:
+      items:
+        - {}
+    clusterKeyExpressions: false
+    secureOption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TEST_SRC
+  materializationType: Materialized View
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b678d7f5-ba83-48f3-bc9a-46a6eb0971aa
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CUSTOMER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b25c70f-e863-43c1-bd4a-cce8a4e67dbb
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8602b03-8b3c-45b9-87ed-a5b78d6b8db7
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7477b721-c74c-4511-8dd6-b4caf4805b53
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 347b6a65-f07e-4032-903d-516d50f8e96b
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ADDRESS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 032a5c45-72c3-4a3d-ad57-2c4a5f8cdeab
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f32e8ba-6d57-4203-9809-b0254eb1bf88
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PHONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 954994aa-24b5-445e-a469-c3a67d84d05e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ed1fae6-f2ba-4a17-8f67-7057ca632479
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dc1046b0-e169-44b7-8def-75084048209e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9592422b-9cc6-4ba1-82ab-d6dd193fa027
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: LAST_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5b90dd6-2bad-433f-a304-ee0ca91a6280
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbb10e5c-a01c-4ce3-966e-a5e59551069f
+          stepCounter: c874f363-0a09-45bb-91ae-0eb606987a13
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: RECORD_HASH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7df2c768-44e4-4755-aefb-03dcf8816d7e
+                stepCounter: b70a73d0-da1f-4e11-a8c7-57f6f532e6b9
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TEST_SRC
+            nodeName: STG_SRC_CUSTOMER_CHANGES_HASH
+        join:
+          joinCondition: FROM {{ ref('TEST_SRC', 'STG_SRC_CUSTOMER_CHANGES_HASH') }} "STG_SRC_CUSTOMER_CHANGES_HASH"
+        name: MV_SRC_CUSTOMER_CHANGES_HASH
+        noLinkRefs: []
+  name: MV_SRC_CUSTOMER_CHANGES_HASH
+  overrideSQL: false
+  schema: ""
+  sqlType: materialized-view:::178
+  type: sql
+  version: 1
+type: Node
