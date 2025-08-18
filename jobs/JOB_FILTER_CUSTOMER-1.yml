@@ -1,6 +1,6 @@
 excludeSelector: ""
 fileVersion: 1
 id: "1"
-includeSelector: "{ location: SRC name: CUSTOMER } OR { location: TARGET name: STG_CUSTOMER_FILTERED } OR { location: SRC name: DIM_CUSTOMER_FILTERED }"
+includeSelector: "{ location: SRC name: CUSTOMER } OR { location: TARGET name: STG_CUSTOMER_FILTERED } OR { location: SRC name: DIM_CUSTOMER_FILTERED } OR { location: TEST_SRC name: EMP } OR { location: TEST_SRC name: STG_EMP } OR { location: SRC name: DIM_EMP }"
 name: JOB_FILTER_CUSTOMER
 type: Job
