@@ -38,7 +38,7 @@ macroString: |
     {% else %}
     -- If unknown test case, do nothing
     WHERE 1=0
-    {% endif %};
+    {% endif %}
   
   {%- endmacro %}
   
