@@ -10,7 +10,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SRC
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -39,6 +39,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
+        isBusinessKey: true
         name: EMP_ID
         nullable: true
         sourceColumnReferences:
@@ -53,6 +54,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
+        isBusinessKey: true
         name: EMP_NAME
         nullable: true
         sourceColumnReferences:
@@ -67,6 +69,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
+        isBusinessKey: true
         name: EMP_ADDRESS
         nullable: true
         sourceColumnReferences:
@@ -81,6 +84,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
+        isBusinessKey: true
         name: EMP_EMAIL
         nullable: true
         sourceColumnReferences:
