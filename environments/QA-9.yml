@@ -1,0 +1,14 @@
+fileVersion: 1
+id: "9"
+mappingDefinitions:
+  SRC:
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+  TARGET:
+    database: COALESCE_DB
+    schema: DEV_SCHEMA
+  TEST_SRC:
+    database: TEST_DB
+    schema: TEST_SCHEMA
+name: QA
+type: Environment
