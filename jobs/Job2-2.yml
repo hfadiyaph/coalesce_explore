@@ -1,0 +1,6 @@
+excludeSelector: ""
+fileVersion: 1
+id: "2"
+includeSelector: "{{JOB_FILTER_CUSTOMER}}"
+name: Job2
+type: Job
