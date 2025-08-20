@@ -121,7 +121,6 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: |-
-            {{ stage('Override Create SQL') }}
             	CREATE OR REPLACE VIEW {{ ref('TEST_SRC', 'STG_CUSTOMER_HASH_DIFF')}} AS (
             		WITH src AS (
             			SELECT

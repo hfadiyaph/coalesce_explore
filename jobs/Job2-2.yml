@@ -1,6 +1,6 @@
 excludeSelector: ""
 fileVersion: 1
 id: "2"
-includeSelector: "{{JOB_FILTER_CUSTOMER}}"
+includeSelector: "{{JOB_FILTER_CUSTOMER}} OR { location: TEST_SRC name: EMP } OR { location: TEST_SRC name: STG_EMP } OR { location: TARGET name: DIM_EMP }"
 name: Job2
 type: Job
